@@ -5,7 +5,18 @@ export default function Item(props) {
     
     function changeStyle(index) {
         let itemClicked = [... itens];
-        itemClicked[index].clicked = "li-clicked";
+        let j = 0;
+        const hasClassClicked = itemClicked.find((item, indice) => {
+            j = indice;
+            return item.clicked === "li-clicked"
+        })
+        
+        if(hasClassClicked && hasClassClicked.clicked === "li-clicked") {
+            itemClicked[j].clicked = "";
+            itemClicked[index].clicked = "li-clicked";
+        } else {
+            itemClicked[index].clicked = "li-clicked";
+        }
         setItens(itemClicked);
     }
 
